@@ -1,5 +1,7 @@
 package com.example.gamesprojects.controller;
 
+import com.example.gamesprojects.domain.Game;
+import com.example.gamesprojects.domain.dto.GameDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

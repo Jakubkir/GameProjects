@@ -4,6 +4,7 @@ import com.example.gamesprojects.domain.Game;
 import com.example.gamesprojects.domain.dto.GameDto;
 import com.example.gamesprojects.exception.GameNotFoundException;
 import com.example.gamesprojects.mapper.GameMapper;
+import com.example.gamesprojects.service.GameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

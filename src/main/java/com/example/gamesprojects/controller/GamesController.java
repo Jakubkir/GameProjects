@@ -29,7 +29,7 @@ public class GamesController {
 
     @GetMapping(value = "{id}")
     public ResponseEntity<GameDto> getGame(@PathVariable Long id) throws GameNotFoundException {
-        return ResponseEntity.ok(gameMapper.mapToGameDto(gameDbService.getGames(gameId)));
+        return ResponseEntity.ok(gameMapper.mapToGameDto(gameService.getGame(id)));
     }
 
     @DeleteMapping(value = "{id}")
@@ -39,7 +39,7 @@ public class GamesController {
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GameDto> updateGame(@@RequestBody GameDto gameDto) {
+    public ResponseEntity<GameDto> updateGame(@RequestBody GameDto gameDto) {
         Game game = gameMapper.mapToGame(gameDto);
         Game savedgame = gameService.saveGame(game);
         return ResponseEntity.ok(gameMapper.mapToGameDto(savedgame));
@@ -51,5 +51,4 @@ public class GamesController {
         gameService.saveGame(game);
         return ResponseEntity.ok().build();
     }
-}
 }

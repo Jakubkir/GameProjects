@@ -21,6 +21,8 @@ public class User {
     private Long id;
     @Column(name = "LOGIN")
     private String login;
+    @Column(name = "PASSWORD")
+    private String password;
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "ADDRESS")
@@ -28,10 +30,11 @@ public class User {
     @Column(name = "USER_STATUS")
     private boolean status;
 
-    public User(String login, String email, String address, boolean status) {
+    public User(String login, String email, String address, boolean status, String password) {
         this.login = login;
         this.email = email;
         this.address = address;
         this.status = status;
+        this.password = password;
     }
 }

@@ -14,10 +14,10 @@ public class UserController {
 
 
         private final UserMapper userMapper;
-        private final UserDbService userDbService;
+        private final UserService userDbService;
 
         @Autowired
-        public UsersController(UserMapper userMapper, UserDbService userDbService) {
+        public UsersController(UserMapper userMapper, UserService userService) {
             this.userMapper = userMapper;
             this.userDbService = userDbService;
         }
@@ -46,16 +46,11 @@ public class UserController {
             return ResponseEntity.ok().build();
         }
 
-        @GetMapping(value = "key/{usersId}")
-        public ResponseEntity<Integer> fetchKey(@PathVariable Long usersId) {
-            Integer key = userDbService.getKey(usersId).orElseThrow(InvalidKeyException::new);
-            return ResponseEntity.ok(key);
-        }
+    @DeleteMapping(value="{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) throws UserNotFoundException {
+        userService.deleteUser(id);
+        return ResponseEntity.ok().build();
+    }
 
-        @PutMapping(value = "generate_key/{usersId}/{login}")
-        public ResponseEntity<Void> generateKey(@PathVariable Long usersId, @PathVariable String login) {
-            userDbService.generateKey(usersId, login);
-            return ResponseEntity.ok().build();
-        }
     }
 

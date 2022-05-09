@@ -30,11 +30,15 @@ public class User {
     @Column(name = "USER_STATUS")
     private boolean status;
 
-    public User(String login, String email, String address, boolean status, String password) {
+    public User(Long id, String login, String password, String email, String address, boolean status) {
+        this.id = id;
         this.login = login;
+        this.password = password;
         this.email = email;
         this.address = address;
         this.status = status;
-        this.password = password;
+    }
+
+    public User(Long id, String login, String email, String password, String address) {
     }
 }

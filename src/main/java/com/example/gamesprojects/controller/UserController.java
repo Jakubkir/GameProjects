@@ -1,7 +1,8 @@
 package com.example.gamesprojects.controller;
 
+import com.example.gamesprojects.domain.User;
 import com.example.gamesprojects.domain.dto.UserDto;
-import org.apache.tomcat.jni.User;
+import com.example.gamesprojects.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,24 +21,24 @@ public class UserController {
     @Autowired
     public UserController(UserMapper userMapper, UserService userService) {
         this.userMapper = userMapper;
-        this.userDbService = userDbService;
+        this.userService = userService;
     }
 
     @GetMapping
     public ResponseEntity<List<UserDto>> getUsers() {
-        List<UserDto> usersDto = userMapper.mapToUserDtoList(userDbService.getUsers());
+        List<UserDto> usersDto = userMapper.mapToUserDtoList(userService.getUser());
         return ResponseEntity.ok(usersDto);
     }
 
     @GetMapping(value = "{usersId}")
     public ResponseEntity<UserDto> getUser(@PathVariable Long usersId) {
         UserDto userDto = userMapper.mapToUserDto(userDbService.getUser(usersId));
-        return ResponseEntity.ok(usersDto);
+        return ResponseEntity.ok(userDto);
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> addUsers(@RequestBody UserDto usersDto) {
-        User user = userMapper.mapToUser(usersDto);
+    public ResponseEntity<UserDto> addUsers(@RequestBody UserDto userDto) {
+        User user = userMapper.mapToUser(userDto);
         return ResponseEntity.ok(userMapper.mapToUserDto(userDbService.createUser(user)));
     }
 

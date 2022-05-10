@@ -1,8 +1,11 @@
 package com.example.gamesprojects.service;
 
 import com.example.gamesprojects.domain.User;
+import com.example.gamesprojects.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -28,4 +31,16 @@ public class UserService {
             throw new UserNotFoundException();
         }
     }
+
+    public User createUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public void blockUser(Long userId) {
+        User blockedUser = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
+        blockedUser.setStatus(false);
+        userRepository.save(blockedUser);
+    }
+
+
 }

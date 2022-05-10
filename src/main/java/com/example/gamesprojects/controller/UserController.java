@@ -2,7 +2,9 @@ package com.example.gamesprojects.controller;
 
 import com.example.gamesprojects.domain.User;
 import com.example.gamesprojects.domain.dto.UserDto;
+import com.example.gamesprojects.exception.UserNotFoundException;
 import com.example.gamesprojects.mapper.UserMapper;
+import com.example.gamesprojects.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +18,7 @@ public class UserController {
 
 
     private final UserMapper userMapper;
-    private final UserService userDbService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserMapper userMapper, UserService userService) {
@@ -31,20 +33,20 @@ public class UserController {
     }
 
     @GetMapping(value = "{usersId}")
-    public ResponseEntity<UserDto> getUser(@PathVariable Long usersId) {
-        UserDto userDto = userMapper.mapToUserDto(userDbService.getUser(usersId));
+    public ResponseEntity<UserDto> getUser(@PathVariable Long usersId) throws UserNotFoundException {
+        UserDto userDto = userMapper.mapToUserDto(userService.getUser(usersId));
         return ResponseEntity.ok(userDto);
     }
 
     @PostMapping
     public ResponseEntity<UserDto> addUsers(@RequestBody UserDto userDto) {
         User user = userMapper.mapToUser(userDto);
-        return ResponseEntity.ok(userMapper.mapToUserDto(userDbService.createUser(user)));
+        return ResponseEntity.ok(userMapper.mapToUserDto(userService.createUser(user)));
     }
 
     @PutMapping(value = "block_user/{userId}")
     public ResponseEntity<Void> blockUser(@PathVariable Long userId) {
-        userDbService.blockUser(userId);
+        userService.blockUser(userId);
         return ResponseEntity.ok().build();
     }
 

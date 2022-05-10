@@ -45,7 +45,7 @@ public class UserController {
     }
 
     @PutMapping(value = "block_user/{userId}")
-    public ResponseEntity<Void> blockUser(@PathVariable Long userId) {
+    public ResponseEntity<Void> blockUser(@PathVariable Long userId) throws UserNotFoundException {
         userService.blockUser(userId);
         return ResponseEntity.ok().build();
     }

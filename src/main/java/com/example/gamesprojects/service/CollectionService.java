@@ -1,6 +1,7 @@
 package com.example.gamesprojects.service;
 
 import com.example.gamesprojects.domain.Collection;
+import com.example.gamesprojects.respository.CollectionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

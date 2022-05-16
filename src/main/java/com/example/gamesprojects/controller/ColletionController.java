@@ -1,6 +1,7 @@
 package com.example.gamesprojects.controller;
 
 import com.example.gamesprojects.domain.Game;
+import com.example.gamesprojects.domain.dto.CollectionDto;
 import com.example.gamesprojects.domain.dto.GameDto;
 import com.example.gamesprojects.exception.GameNotFoundException;
 import com.example.gamesprojects.mapper.GameMapper;

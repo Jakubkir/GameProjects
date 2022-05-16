@@ -2,12 +2,16 @@ package com.example.gamesprojects.mapper;
 
 import com.example.gamesprojects.domain.Game;
 import com.example.gamesprojects.domain.dto.GameDto;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
+@NoArgsConstructor
 public class GameMapper {
     public Game mapToGame(final GameDto gameDto) {
         return Game.builder()

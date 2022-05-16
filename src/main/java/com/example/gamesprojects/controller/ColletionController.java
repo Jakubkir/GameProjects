@@ -1,9 +1,11 @@
 package com.example.gamesprojects.controller;
 
+import com.example.gamesprojects.domain.Collection;
 import com.example.gamesprojects.domain.Game;
 import com.example.gamesprojects.domain.dto.CollectionDto;
 import com.example.gamesprojects.domain.dto.GameDto;
 import com.example.gamesprojects.exception.GameNotFoundException;
+import com.example.gamesprojects.mapper.CollectionMapper;
 import com.example.gamesprojects.mapper.GameMapper;
 import com.example.gamesprojects.service.GameService;
 import org.springframework.http.HttpStatus;
@@ -11,17 +13,16 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+
 import java.util.List;
 
-public class ColletionController {
+public class CollectionController {
     private final CollectionService collectionService;
     private final CollectionMapper collectionMapper;
     private final GameService gameService;
     private final GameMapper gameMapper;
 
-    public ColletionController() {
-    }
+
 
     @GetMapping
     public ResponseEntity<List<CollectionDto>> getCollections() {

@@ -1,6 +1,8 @@
 package com.example.gamesprojects.respository;
 
 import com.example.gamesprojects.domain.Collection;
+
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 @Transactional
-public interface CollectionRepository {
+public interface CollectionRepository extends CrudRepository<Collection, Long> {
 
     @Override
     List<Collection> findAll();
@@ -24,4 +26,4 @@ public interface CollectionRepository {
     @Override
     void deleteById(Long id);
 }
-}
+

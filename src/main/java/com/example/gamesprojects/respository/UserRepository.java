@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRespository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<User, Long> {
     @Override
     Optional<User> findById(Long id);
 

@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 @Entity
 @Table(name = "collections")
 public class Collection {
@@ -37,6 +39,10 @@ public class Collection {
     public Collection(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public List<Game> getGames() {
+        return null;
     }
 }
 

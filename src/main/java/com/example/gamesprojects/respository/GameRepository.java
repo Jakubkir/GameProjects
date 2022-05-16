@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 @Transactional
-public interface GameRespository extends CrudRepository<Game, Long> {
+public interface GameRepository extends CrudRepository<Game, Long> {
 
     @Override
     List<Game> findAll();

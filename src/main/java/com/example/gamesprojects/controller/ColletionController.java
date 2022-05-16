@@ -4,10 +4,13 @@ import com.example.gamesprojects.domain.Collection;
 import com.example.gamesprojects.domain.Game;
 import com.example.gamesprojects.domain.dto.CollectionDto;
 import com.example.gamesprojects.domain.dto.GameDto;
+import com.example.gamesprojects.exception.CollectionNotFoundException;
 import com.example.gamesprojects.exception.GameNotFoundException;
 import com.example.gamesprojects.mapper.CollectionMapper;
 import com.example.gamesprojects.mapper.GameMapper;
+import com.example.gamesprojects.service.CollectionService;
 import com.example.gamesprojects.service.GameService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +18,10 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
-
-public class CollectionController {
+@RestController
+@RequestMapping("/v1/collections")
+@RequiredArgsConstructor
+class CollectionController {
     private final CollectionService collectionService;
     private final CollectionMapper collectionMapper;
     private final GameService gameService;
@@ -66,7 +71,7 @@ public class CollectionController {
         Collection collection = collectionService.getCollection(id);
         Game game = gameMapper.mapToGame(gameDto);
         collection.getGames().add(game);
-        game.setCollection(collection);
+        game.setCollection((java.util.Collection) collection);
         gameService.saveGame(game);
         collectionService.saveCollection(collection);
         return ResponseEntity.ok().build();
@@ -81,4 +86,4 @@ public class CollectionController {
         return ResponseEntity.ok().build();
     }
 }
-}
+

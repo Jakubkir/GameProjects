@@ -1,6 +1,5 @@
 package com.example.gamesprojects.domain.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -15,9 +14,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-public class ResultDto {
+public class ResultGameDto {
 
-    @JsonProperty("docs")
-    private List<ResultGameDto> games;
+    @JsonProperty("title")
+    private String title;
+
+    @JsonProperty("author_name")
+    private List<String> authors;
+
+    @JsonProperty("first_publish_year")
+    private int first_publish_year;
 }

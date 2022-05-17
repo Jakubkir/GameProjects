@@ -1,5 +1,6 @@
 package com.example.gamesprojects.controller;
 
+import com.example.gamesprojects.domain.dto.ResultDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 

@@ -16,7 +16,7 @@ import java.util.Optional;
 public class LibraryClient {
 
     private final RestTemplate restTemplate;
-    private final OpenLibraryConfig openLibraryConfig;
+    private final LibraryConfig openLibraryConfig;
 
     public ResultDto getGameByAuthor(String keyword) {
         URI url = UriComponentsBuilder.fromHttpUrl(openLibraryConfig.getOpenLibraryApiEndpoint())

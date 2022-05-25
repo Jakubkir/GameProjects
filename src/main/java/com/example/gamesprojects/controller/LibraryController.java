@@ -11,7 +11,7 @@ import java.util.List;
 
 public class LibraryController {
 
-    private final LibraryService LibraryService;
+    private LibraryService LibraryService;
 
     @GetMapping(value = "/author/{keyword}")
     public List<ResultGameDto> getGameByAuthor(@PathVariable String keyword) {
@@ -20,7 +20,7 @@ public class LibraryController {
         List<ResultGameDto> resultGameDtoList = new ArrayList<>();
         resultGameDtoList.addAll(resultDto.getGames());
 
-        return resultGametoList;
+        return resultGameDtoList;
     }
 
     @GetMapping(value = "/title/{keyword}")

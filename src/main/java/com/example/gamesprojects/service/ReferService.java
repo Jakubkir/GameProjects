@@ -1,6 +1,7 @@
 package com.example.gamesprojects.service;
 
 import com.example.gamesprojects.domain.Refer;
+import com.example.gamesprojects.exception.ReferNotFoundException;
 import com.example.gamesprojects.respository.ReferRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

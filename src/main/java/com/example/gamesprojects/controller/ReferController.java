@@ -2,10 +2,12 @@ package com.example.gamesprojects.controller;
 
 import com.example.gamesprojects.domain.Refer;
 import com.example.gamesprojects.domain.dto.ReferDto;
+import com.example.gamesprojects.exception.ReferNotFoundException;
 import com.example.gamesprojects.mapper.ReferMapper;
 import com.example.gamesprojects.service.ReferService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +23,7 @@ public class ReferController {
 
     @GetMapping
     public ResponseEntity<List<ReferDto>> getRefers() {
-        List<Refer> refers = referService.getAlRefers();
+        List<Refer> refers = referService.getAllRefers();
         return ResponseEntity.ok(referMapper.mapToReferDtoList(refers));
     }
 

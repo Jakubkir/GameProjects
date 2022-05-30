@@ -3,6 +3,7 @@ package com.example.gamesprojects.controller;
 import com.example.gamesprojects.domain.Refer;
 import com.example.gamesprojects.domain.dto.ReferDto;
 import com.example.gamesprojects.mapper.ReferMapper;
+import com.example.gamesprojects.service.ReferService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

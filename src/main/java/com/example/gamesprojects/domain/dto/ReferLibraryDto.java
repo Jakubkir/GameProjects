@@ -13,8 +13,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ReferLibraryDto {
-    @JsonProperty("quote_text")
-    private String quote_text;
+    @JsonProperty("refre_text")
+    private String refer_text;
 
     @JsonProperty("author")
     private String author;

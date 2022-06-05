@@ -1,7 +1,7 @@
 package com.example.gamesprojects.refer;
 
-import com.example.gamesprojects.domain.Refer;
-import com.example.gamesprojects.mapper.ReferMapper;
+import com.example.gamesprojects.domain.ReferLib;
+import com.example.gamesprojects.mapper.ReferLibraryMapper;
 import com.example.gamesprojects.service.ReferLibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,10 +12,10 @@ public class ReferLibFacade {
     ReferLibraryService referLibraryService;
 
     @Autowired
-    ReferMapper referMapper;
+    ReferLibraryMapper referLibraryMapper;
 
-    public List<Refer> fetchRandomRefer() {
-        return referMapper.mapToReferDtoList(referLibraryService.fetchRandomRefer());
+    public List<ReferLib> fetchRandomRefer() {
+        return referLibraryMapper.mapToReferLibList(referLibraryService.fetchRandomRefer());
     }
 }
 }
